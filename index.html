@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Invitación jeje</title>
+  <style>
+    /* Reset y estilos base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body, html {
+      font-family: sans-serif;
+      overflow-x: hidden;
+    }
+    /* Pantalla 1: Login */
+    #pantalla1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: url('img/Bg11.jpg') no-repeat center center;
+      background-size: cover;
+    }
+
+    /* New style for the login box with rounded borders and cyan border */
+    .login-box {
+      background-color: rgba(255, 250, 250, 0.8); /* optional: white with transparency */
+      border: 10px solid rgb(183, 236, 236);
+      border-radius: 15px;
+      padding: 40px;
+      text-align: center;
+    }
+    #pantalla1 input {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+    }
+    #pantalla1 button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    /* Pantalla 2: Contenido total */
+    #pantalla2 {
+      display: none;
+      position: relative;
+      background: url('img/Bgb2.png') no-repeat center center;
+      background-size: cover;
+    }
+    .container {
+      display: flex;
+    }
+    /* Columna izquierda: fondos */
+    .left-col {
+      width: 50%;
+      position: relative;
+    }
+    /* Cada sección de fondo ocupa 100vh */
+    .bg-section {
+      height: 105vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* La imagen de fondo (más pequeña)*/
+    .bg-image {
+      width: 60%;
+      height: 500px; /* Ensure a fixed height so the background is visible */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: transform 0.3s ease;
+    }
+    /* Columna derecha: textos */
+    .right-col {
+      width: 50%;
+    }
+    h2{
+      color: rgb(0, 61, 15);
+    }
+
+    .section {
+      height: 100vh;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: rgba(255, 250, 250, 0.3); /* optional: white with transparency */
+      padding: 10px;
+      text-align: center;
+    }
+    /* Sección final con botones */
+    #final {
+  background-color: rgba(255, 255, 255); /* Semi-transparent white */
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+#final button {
+  background: linear-gradient(135deg, #66a6ff, #016cb4);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  margin: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#submitBtn {
+  background: linear-gradient(135deg, #66a6ff, #016cb4);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  margin: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#final button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+#final button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#submitBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+#submitBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+    /* Overlay: imágenes que se acercan (solo se muestran en pantalla2) */
+    .overlay {
+      position: fixed;
+      top: 35%;
+      transition: left 0.3s ease, transform 0.3s ease;
+      width: 100px;
+    }
+    /* Posiciones iniciales */
+    #overlay1 {
+      left: 10%;
+    }
+    #overlay2 {
+      left: 30%;
+    }
+  </style>
+</head>
+<body>
+  <!-- Pantalla 1: Ingreso de palabra -->
+<div id="pantalla1">
+  <div class="login-box">
+    <h1>¿Invitación? No, es un plan</h1>
+    <p>Para saber más, debes ingresar la palabra correcta</p>
+    <input type="text" id="passwordInput" placeholder="Aquí va, duhh">
+    <button id="submitBtn">Voto de Confianza</button>
+  </div>
+</div>
+
+  <!-- Pantalla 2: Contenido principal -->
+  <div id="pantalla2">
+    <div class="container">
+      <!-- Columna Izquierda: Fondos -->
+      <div class="left-col">
+        <div class="bg-section" data-index="1">
+            <div class="bg-image" style="background-image: url('img/backg2.jpg');"></div>
+        </div>
+        <div class="bg-section" data-index="2">
+            <div class="bg-image" style="background-image: url('img/backg3.webp');"></div>
+        </div>
+        <div class="bg-section" data-index="3">
+            <div class="bg-image" style="background-image: url('img/backg1.jpg');"></div>
+        </div>
+    </div>
+      <!-- Columna Derecha: Textos -->
+      <div class="right-col">
+        <section class="section" data-index="1">
+          <h2>Primera parada</h2>
+          <br>
+          <p>Poco de Sip Sip y mucho de Yap Yap. <br>
+            Hay una actividad sorpresa 👀👀.<br> La lista es larga
+            y aunque no se va a acabar...<br>
+            Hora: 10:17 am (+5 minutos para los latinos, +15 minutos para la checa)<br>
+            Lugar: Nos encontramos y allá te dirijo.
+          </p>
+        </section>
+        <section class="section" data-index="2">
+          <h2>Dva parada</h2>
+          <br>
+          <p>Bastante Sip and Sip. Porque la verdad, para esa hora hará mucha hambre... No preguntes
+            qué será, ya elegí.<br>
+            Hora: Hora de almuerzo español.<br>
+          Lugar: Es fácil de adivinar.</p>
+        </section>
+        <section class="section" data-index="3">
+          <h2>Ultima estación</h2>
+          <br>
+          <p>Será sorpresa pero no es difícil de adivinar. <br>
+            Más te vale que te guste, advertida estás. <br>
+            No hay más info jeje.</p>
+        </section>
+        <!-- Sección final con botones -->
+        <div id="final">
+          <p>¿Estás lista?</p>
+          <button id="btnSi">Sí o sí</button>
+          <button id="btnNo">No...?</button>
+          <p id="soloUno" style="display:none;">JEBE TI???? Lo siento Natalko, sólo hay 1 opción 🌚🌞</p>
+        </div>
+      </div>
+    </div>
+    <!-- Overlay: Imágenes que se acercan (solo visibles en pantalla2) -->
+    <img src="img/imagen1.png" alt="Imagen 1" class="overlay" id="overlay1">
+    <img src="img/imagen2.png" alt="Imagen 2" class="overlay" id="overlay2">
+  </div>
+
+  <script>
+    /* ===== Lógica de Pantalla 1 ===== */
+    const correctPassword = "mentirosa"; // palabra correcta
+    const submitBtn = document.getElementById('submitBtn');
+    const passwordInput = document.getElementById('passwordInput');
+    const pantalla1 = document.getElementById('pantalla1');
+    const pantalla2 = document.getElementById('pantalla2');
+
+    submitBtn.addEventListener('click', function() {
+      if (passwordInput.value.trim().toLowerCase() === correctPassword) {
+        pantalla1.style.display = "none";
+        pantalla2.style.display = "block";
+      } else {
+        alert("Palabra incorrecta. Intenta de nuevo.");
+      }
+    });
+
+    /* ===== Lógica de Scroll para efectos ===== */
+    const overlay1 = document.getElementById('overlay1');
+    const overlay2 = document.getElementById('overlay2');
+
+    function actualizarEfectos() {
+      // Total de scroll posible en el documento
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const ratio = window.scrollY / maxScroll; // valor de 0 a 1
+
+      // Actualizar posición horizontal de las overlay
+      const initialOverlay1Left = 10; // %
+      const finalOverlay1Left = 19;   // %
+      const initialOverlay2Left = 30; // %
+      const finalOverlay2Left = 21;   // %
+
+      const newLeft1 = initialOverlay1Left + (finalOverlay1Left - initialOverlay1Left) * ratio;
+      const newLeft2 = initialOverlay2Left + (finalOverlay2Left - initialOverlay2Left) * ratio;
+      overlay1.style.left = newLeft1 + '%';
+      overlay2.style.left = newLeft2 + '%';
+
+      // Efecto parallax para cada imagen de fondo en la columna izquierda
+      document.querySelectorAll('.bg-section').forEach(section => {
+        const rect = section.getBoundingClientRect();
+        let parallaxRatio = (window.innerHeight - rect.top) / window.innerHeight;
+        parallaxRatio = Math.max(0, Math.min(1, parallaxRatio));
+        const bgImage = section.querySelector('.bg-image');
+        bgImage.style.transform = `translateY(${-50 * parallaxRatio}px)`;
+      });
+    }
+
+    window.addEventListener('scroll', actualizarEfectos);
+
+    /* ===== Lógica de los botones finales ===== */
+    const btnNo = document.getElementById('btnNo');
+    const btnSi = document.getElementById('btnSi');
+    const soloUno = document.getElementById('soloUno');
+
+    btnNo.addEventListener('click', function() {
+      btnNo.style.display = 'none';
+      soloUno.style.display = 'block';
+    });
+
+    btnSi.addEventListener('click', function() {
+      soloUno.textContent = "Excelente decisión, obviamente fue el primero que elegiste 🌚";
+      soloUno.style.display = 'block';
+      btnNo.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
